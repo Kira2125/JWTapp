@@ -1,4 +1,4 @@
-package com.app.project.Controller;
+package com.app.project.Controller.DTO;
 
 import lombok.Data;
 

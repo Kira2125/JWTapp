@@ -1,14 +1,11 @@
 package com.app.project.Controller;
 
-import com.app.project.Model.Developer;
-import com.app.project.Model.Role;
-import com.app.project.Model.Status;
+import com.app.project.Controller.DTO.AuthenticationRequestDTO;
+import com.app.project.Controller.DTO.RegistryRequestDTO;
 import com.app.project.Model.User;
 import com.app.project.Repository.UserRepository;
-import com.app.project.Exceptions.EmailExistsException;
 import com.app.project.Security.JwtTokenProvider;
 import com.app.project.Service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -17,20 +14,15 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @RestController
+@CrossOrigin(origins="http://localhost:3000")
 public class AuthenticationRestControllerV1 {
 
     private final AuthenticationManager authenticationManager;

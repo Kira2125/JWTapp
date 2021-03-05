@@ -4,6 +4,7 @@ import {Container, Row, Col} from 'react-bootstrap';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Footer from "./Components/Footer";
 import Welcome from "./Components/Welcome";
+import NavigationBar from "./Components/NavigationBar";
 
 export default function App() {
 
@@ -13,7 +14,7 @@ export default function App() {
 
   return (
       <Router>
-
+        <NavigationBar/>
         <Container className={"text-center"}>
           <Row>
             <Col lg={12} style={{marginTop: 20 + 'px'}}>

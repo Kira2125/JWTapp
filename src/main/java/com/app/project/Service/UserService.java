@@ -1,12 +1,11 @@
 package com.app.project.Service;
 
-import com.app.project.Controller.RegistryRequestDTO;
+import com.app.project.Controller.DTO.RegistryRequestDTO;
 import com.app.project.Exceptions.EmailExistsException;
 import com.app.project.Model.Role;
 import com.app.project.Model.Status;
 import com.app.project.Model.User;
 import com.app.project.Repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
