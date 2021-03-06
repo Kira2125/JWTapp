@@ -4,7 +4,8 @@ import {connect} from "react-redux";
 import {deleteBook, getAllBooks} from "../../Store/Book/bookActions";
 import {Button, ButtonGroup, Card, FormControl, Image, InputGroup, Table} from "react-bootstrap";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faList} from '@fortawesome/free-solid-svg-icons';
+import {faEdit, faList, faTrash} from '@fortawesome/free-solid-svg-icons';
+import {Link} from "react-router-dom";
 
 class BookList extends Component {
 
@@ -16,11 +17,16 @@ class BookList extends Component {
     }
 
 
-
     componentDidMount() {
         axios.get("http://localhost:8080/books").then((response) => {
             this.setState({books: response.data})
         })
+    }
+
+    deleteBook = (bookId) => {
+            axios.delete("http://localhost:8080/books/" + bookId).then((res) => {
+                this.setState({ books: this.state.books.filter(book => book.id !== bookId)})
+            });
     }
 
 
@@ -66,7 +72,12 @@ class BookList extends Component {
                                             <td>{book.price}</td>
                                             <td>{book.language}</td>
                                             <td>{book.genre}</td>
-
+                                            <td>
+                                                <ButtonGroup>
+                                                    <Link to={"edit/"+book.id} className="btn btn-sm btn-outline-primary"><FontAwesomeIcon icon={faEdit} /></Link>{' '}
+                                                    <Button size="sm" variant="outline-danger" onClick={this.deleteBook.bind(this, book.id)}><FontAwesomeIcon icon={faTrash} /></Button>
+                                                </ButtonGroup>
+                                            </td>
                                         </tr>
                                     ))
                             }
