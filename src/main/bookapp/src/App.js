@@ -7,6 +7,8 @@ import Welcome from "./Components/Welcome";
 import NavigationBar from "./Components/NavigationBar";
 import Login from "./Components/User/Login";
 import Register from "./Components/User/Register";
+import UserList from "./Components/User/UserList";
+import BookList from "./Components/Book/BookList";
 
 export default function App() {
 
@@ -22,6 +24,8 @@ export default function App() {
             <Col lg={12} style={{marginTop: 20 + 'px'}}>
               <Switch>
                 <Route path="/" exact component={() => <Welcome heading={heading} quote={quote} footer={footer}/>}/>
+                <Route path="/users" exact component={UserList}/>
+                <Route path="/books" exact component={BookList}/>
                 <Route path="/login" exact component={Login}/>
                 <Route path="/logout" exact component={Login}/>
                 <Route path="/register" exact component={Register}/>

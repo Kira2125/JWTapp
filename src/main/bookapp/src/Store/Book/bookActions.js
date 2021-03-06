@@ -6,7 +6,7 @@ export const saveBook = book => {
         dispatch({
             type: BT.SAVE_BOOK_REQUEST
         });
-        axios.post("http://localhost:8081/rest/books", book)
+        axios.post("http://localhost:8080/books", book)
             .then(response => {
                 dispatch(bookSuccess(response.data));
             })
@@ -16,12 +16,27 @@ export const saveBook = book => {
     };
 };
 
+export const getAllBooks = () => {
+    return dispatch => {
+        dispatch({
+            type: BT.SAVE_BOOK_REQUEST
+        });
+        axios.get("http://localhost:8080/books")
+            .then(response => {
+                dispatch(bookSuccess(response.data));
+            })
+            .catch(error => {
+                dispatch(bookFailure(error));
+            });
+    };
+}
+
 export const fetchBook = bookId => {
     return dispatch => {
         dispatch({
             type: BT.FETCH_BOOK_REQUEST
         });
-        axios.get("http://localhost:8081/rest/books/"+bookId)
+        axios.get("http://localhost:8080/books/"+bookId)
             .then(response => {
                 dispatch(bookSuccess(response.data));
             })
@@ -36,7 +51,7 @@ export const updateBook = book => {
         dispatch({
             type: BT.UPDATE_BOOK_REQUEST
         });
-        axios.put("http://localhost:8081/rest/books", book)
+        axios.put("http://localhost:8080/books", book)
             .then(response => {
                 dispatch(bookSuccess(response.data));
             })
@@ -51,7 +66,7 @@ export const deleteBook = bookId => {
         dispatch({
             type: BT.DELETE_BOOK_REQUEST
         });
-        axios.delete("http://localhost:8081/rest/books/"+bookId)
+        axios.delete("http://localhost:8080/books/"+bookId)
             .then(response => {
                 dispatch(bookSuccess(response.data));
             })
@@ -80,7 +95,7 @@ export const fetchLanguages = () => {
         dispatch({
             type: BT.FETCH_LANGUAGES_REQUEST
         });
-        axios.get("http://localhost:8081/rest/books/languages")
+        axios.get("http://localhost:8080/books/languages")
             .then(response => {
                 dispatch({
                     type: BT.LANGUAGES_SUCCESS,
@@ -101,7 +116,7 @@ export const fetchGenres = () => {
         dispatch({
             type: BT.FETCH_GENRES_REQUEST
         });
-        axios.get("http://localhost:8081/rest/books/genres")
+        axios.get("http://localhost:8080/books/genres")
             .then(response => {
                 dispatch({
                     type: BT.GENRES_SUCCESS,
