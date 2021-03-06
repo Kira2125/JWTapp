@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class RegistryRequestDTO {
     private String name;
-    private String lastname;
+    private String lastName;
     private String password;
     private String email;
 }

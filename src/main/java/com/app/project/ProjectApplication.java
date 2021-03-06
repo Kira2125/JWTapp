@@ -6,13 +6,20 @@ import com.app.project.Model.Status;
 import com.app.project.Model.User;
 import com.app.project.Repository.BookRepository;
 import com.app.project.Repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
 public class ProjectApplication {
+    private final PasswordEncoder passwordEncoder;
+
+    public ProjectApplication(PasswordEncoder passwordEncoder) {
+        this.passwordEncoder = passwordEncoder;
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(ProjectApplication.class, args);
@@ -27,7 +34,7 @@ public class ProjectApplication {
                 User user1 = new User();
                 user1.setFirstName("Admin");
                 user1.setLastName("Adminov");
-                user1.setPassword("admin");
+                user1.setPassword(passwordEncoder.encode("admin"));
                 user1.setEmail("admin@gmail.com");
                 user1.setRole(Role.ADMIN);
                 user1.setStatus(Status.ACTIVE);
@@ -36,7 +43,7 @@ public class ProjectApplication {
                 User user2 = new User();
                 user2.setFirstName("User");
                 user2.setLastName("Ordinary");
-                user2.setPassword("user");
+                user2.setPassword(passwordEncoder.encode("user"));
                 user2.setEmail("user@gmail.com");
                 user2.setRole(Role.USER);
                 user2.setStatus(Status.ACTIVE);

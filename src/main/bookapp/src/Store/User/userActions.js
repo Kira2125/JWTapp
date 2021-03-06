@@ -1,4 +1,4 @@
-import {FETCH_USER_FAILURE, FETCH_USER_REQUEST, FETCH_USER_SUCCESS} from "./userTypes";
+import {ADD_USER_REQUEST, FETCH_USER_FAILURE, FETCH_USER_REQUEST, FETCH_USER_SUCCESS} from "./userTypes";
 import axios from "axios";
 
 export const fetchUsers = () => {
@@ -14,11 +14,33 @@ export const fetchUsers = () => {
     };
 };
 
+export const addUser = (name, lastName, email, password) => {
+    const credentials = {
+        name: name,
+        lastName: lastName,
+        email: email,
+        password: password
+    };
+    return dispatch => {
+        dispatch(addUserRequest());
+        axios.post("http://localhost:8080/registration", credentials)
+            .catch(error => {
+                dispatch(fetchUserFailure());
+            });
+    }
+}
+
 
 
 const fetchUserRequest = () => {
     return {
         type: FETCH_USER_REQUEST
+    };
+};
+
+const addUserRequest = () => {
+    return {
+        type: ADD_USER_REQUEST
     };
 };
 

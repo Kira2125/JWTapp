@@ -32,7 +32,7 @@ public class UserService {
         user.setEmail(registryRequestDTO.getEmail());
         user.setPassword(passwordEncoder.encode(registryRequestDTO.getPassword()));
         user.setFirstName(registryRequestDTO.getName());
-        user.setLastName(registryRequestDTO.getLastname());
+        user.setLastName(registryRequestDTO.getLastName());
         user.setRole(Role.USER);
         user.setStatus(Status.ACTIVE);
         userRepository.save(user);
