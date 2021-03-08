@@ -33,26 +33,6 @@ const reducer = (state = initialState, action) => {
                 book: '',
                 error: action.payload
             };
-        case LANGUAGES_SUCCESS:
-            return {
-                languages: action.payload,
-                error: ''
-            };
-        case LANGUAGES_FAILURE:
-            return {
-                languages: '',
-                error: action.payload
-            };
-        case GENRES_SUCCESS:
-            return {
-                genres: action.payload,
-                error: ''
-            };
-        case GENRES_FAILURE:
-            return {
-                genres: '',
-                error: action.payload
-            };
         default: return state;
     }
 };

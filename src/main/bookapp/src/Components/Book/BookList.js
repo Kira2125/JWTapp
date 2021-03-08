@@ -47,6 +47,7 @@ class BookList extends Component {
                         <Table bordered hover >
                             <thead>
                             <tr>
+                                <th>Poster</th>
                                 <th>Title</th>
                                 <th>Author</th>
                                 <th>ISBN Number</th>
@@ -64,8 +65,9 @@ class BookList extends Component {
                                     </tr> :
                                     books.map((book) => (
                                         <tr key={book.id}>
+                                            <td><Image src={book.coverPhotoURL}  width="200" height="300"/></td>
                                             <td>
-                                                <Image src={book.coverPhotoURL} roundedCircle width="25" height="25"/> {book.title}
+                                                 {book.title}
                                             </td>
                                             <td>{book.author}</td>
                                             <td>{book.isbnNumber}</td>

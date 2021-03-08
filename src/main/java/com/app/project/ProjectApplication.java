@@ -59,6 +59,7 @@ public class ProjectApplication {
                     book.setTitle("Grapes of wrath");
                     book.setIsbnNumber(12325L + i);
                     book.setAuthor("J.Steinback");
+                    book.setCoverPhotoURL("https://upload.wikimedia.org/wikipedia/commons/a/ad/The_Grapes_of_Wrath_%281939_1st_ed_cover%29.jpg");
                     bookRepository.save(book);
                 }
             }

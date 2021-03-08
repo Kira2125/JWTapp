@@ -29,7 +29,7 @@ public class BookRestControllerV1 {
 
     @GetMapping("/{id}")
     public Book getById(@PathVariable Long id) {
-        return bookRepository.getOne(id);
+        return bookRepository.findById(id).orElse(null);
     }
 
     @PostMapping
